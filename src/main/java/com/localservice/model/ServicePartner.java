@@ -14,6 +14,7 @@ public class ServicePartner {
     private String phone;
     private String serviceType;
     private int experience;
+
     private String password;
 
     public Long getId() { return id; }

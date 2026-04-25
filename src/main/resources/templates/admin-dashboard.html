@@ -682,6 +682,90 @@
         </table>
       </div>
     </div>
+    <!-- ── Registered Service Providers Table ── -->
+<div class="table-card" style="margin-top: 2rem;">
+  <div class="table-card-header">
+    <h2>
+      <svg viewBox="0 0 24 24">
+        <polyline points="20 6 9 17 4 12"/>
+      </svg>
+      Registered Service Providers
+      <span class="pending-count" 
+            style="background:#D1FAE5; color:#065F46;"
+            th:text="${#lists.size(partners)}">0</span>
+    </h2>
+  </div>
+
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Partner</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Service</th>
+          <th>Experience</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr th:each="partner : ${partners}">
+
+          <!-- Name with avatar -->
+          <td>
+            <div class="td-name">
+              <div class="avatar" 
+                   style="background: linear-gradient(135deg, #6EE7B7, #059669);"
+                   th:text="${#strings.substring(partner.name, 0, 1)}">?</div>
+              <div class="td-name-text">
+                <strong th:text="${partner.name}">Partner Name</strong>
+                <span>Registered</span>
+              </div>
+            </div>
+          </td>
+
+          <!-- Email -->
+          <td th:text="${partner.email}">email@example.com</td>
+
+          <!-- Phone -->
+          <td th:text="${partner.phone}">0000000000</td>
+
+          <!-- Service badge -->
+          <td>
+            <span class="service-badge" 
+                  style="background:#D1FAE5; color:#065F46; border-color:#A7F3D0;"
+                  th:text="${partner.serviceType}">Service</span>
+          </td>
+
+          <!-- Experience -->
+          <td>
+            <span class="exp-text" 
+                  th:text="${partner.experience} + ' yrs'">0 yrs</span>
+          </td>
+
+        </tr>
+
+        <!-- Empty state -->
+        <tr th:if="${#lists.isEmpty(partners)}">
+          <td colspan="5">
+            <div class="empty-state">
+              <div class="empty-icon">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="8" x2="12" y2="12"/>
+                  <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+              </div>
+              <h3>No registered providers yet</h3>
+              <p>Approved partners will appear here.</p>
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
 
   </div><!-- end .page-wrapper -->
 

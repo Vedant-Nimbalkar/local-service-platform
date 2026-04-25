@@ -36,20 +36,4 @@ public class ServicePartnerService {
 
         return null;
     }
-    public void approvePartner(Long requestId){
-
-        ServicePartnerRequest req = requestRepo.findById(requestId).orElseThrow();
-
-        ServicePartner partner = new ServicePartner();
-
-        partner.setName(req.getName());
-        partner.setEmail(req.getEmail());
-        partner.setPassword(req.getPassword()); // important
-        partner.setPhone(req.getPhone());
-
-        partnerRepo.save(partner);
-
-        req.setStatus("APPROVED");
-        requestRepo.save(req);
-    }
 }

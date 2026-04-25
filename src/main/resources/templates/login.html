@@ -521,7 +521,6 @@
 
       </form>
 
-      
       <!-- Divider -->
       <div class="divider">
         <div class="divider-line"></div>
@@ -529,10 +528,12 @@
         <div class="divider-line"></div>
       </div>
 
+      <!-- Auth Footer — href preserved exactly -->
       <div class="auth-footer">
         <a href="/user/register">Create a new account</a>
       </div>
 
+      <!-- Secure note -->
       <div class="secure-note">
         <svg viewBox="0 0 24 24">
           <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
@@ -543,39 +544,6 @@
     </div>
   </main>
 
-    
-
-      
-  <!-- ✅ JWT SCRIPT -->
-  <script>
-function loginUser(event) {
-    event.preventDefault();
-
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-
-    fetch("/auth/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            email: email,
-            password: password
-        })
-    })
-    .then(res => res.text())
-    .then(token => {
-        if(token === "Invalid credentials"){
-            alert("Login failed");
-        } else {
-            localStorage.setItem("token", token);
-            alert("Login success ✅");
-            window.location.href = "/dashboard";
-        }
-    });
-}
-</script>
   <!-- ── Footer ── -->
   <footer>
     <span class="footer-copy">© <script>document.write(new Date().getFullYear())</script> Fixora Inc. All rights reserved.</span>
